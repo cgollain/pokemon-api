@@ -41,4 +41,12 @@ public class PokemonService {
 		// DELETE FROM pokemon WHERE id = :id
 		pokemonRepository.deleteById(id);
 	}
+
+	public void update(String id, Pokemon pokemonBody) {
+		Pokemon pokemonAModifier = findById(id);
+		pokemonAModifier.setType(pokemonBody.getType());
+		pokemonAModifier.setName(pokemonBody.getName());
+		pokemonAModifier.setLevel(pokemonBody.getLevel());
+		pokemonRepository.save(pokemonAModifier);
+	}
 }

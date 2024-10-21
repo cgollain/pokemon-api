@@ -43,6 +43,15 @@ public class PokemonController {
 	}
 
 	// PUT
+	@PutMapping("/{id}")
+	public ResponseEntity<Pokemon> update(@PathVariable String id, @RequestBody Pokemon pokemon) {
+		Pokemon pokemonAModifier = service.findById(id);
+		if (pokemonAModifier == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		service.update(id, pokemon);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
 
 	// DELETE
 	@DeleteMapping("/{id}")
