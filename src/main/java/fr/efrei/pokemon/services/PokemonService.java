@@ -36,4 +36,9 @@ public class PokemonService {
 		// INSERT INTO pokemon VALUES (:name, :level, :type);
 		pokemonRepository.save(pokemon);
 	}
+
+	public void delete(String id) {
+		// DELETE FROM pokemon WHERE id = :id
+		pokemonRepository.deleteById(id);
+	}
 }

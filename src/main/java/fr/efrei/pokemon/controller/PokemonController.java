@@ -45,4 +45,13 @@ public class PokemonController {
 	// PUT
 
 	// DELETE
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> delete(@PathVariable String id) {
+		Pokemon pokemon = service.findById(id);
+		if(pokemon == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		service.delete(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
 }
