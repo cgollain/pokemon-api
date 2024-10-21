@@ -1,6 +1,16 @@
 package fr.efrei.pokemon.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Pokemon {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID) // AUTO INCREMENT
+	private String id;
 
 	private String name;
 
