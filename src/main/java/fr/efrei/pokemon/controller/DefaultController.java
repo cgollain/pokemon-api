@@ -1,6 +1,7 @@
 package fr.efrei.pokemon.controller;
 
 
+import fr.efrei.pokemon.models.Pokemon;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class DefaultController {
 
 	@GetMapping
-	public String greetings() {
-		return "Hello World!";
+	public Pokemon greetings() {
+		Pokemon pokemon = new Pokemon();
+		pokemon.setLevel(30);
+		pokemon.setName("Ronflex");
+		pokemon.setType("Normal");
+		return pokemon;
 	}
 }
