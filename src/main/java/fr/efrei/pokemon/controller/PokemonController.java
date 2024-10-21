@@ -23,14 +23,23 @@ public class PokemonController {
 	// GET
 	@GetMapping
 	public ResponseEntity<List<Pokemon>> findAll() {
-		return new ResponseEntity< >(service.findAll(), HttpStatus.OK);
+		return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Pokemon> findById(@PathVariable String id) {
+		Pokemon pokemon = service.findById(id);
+		if (pokemon == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(pokemon, HttpStatus.OK);
 	}
 
 	// POST
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody Pokemon pokemon) {
 		service.save(pokemon);
-		return new ResponseEntity< >(HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	// PUT

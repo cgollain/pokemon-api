@@ -24,6 +24,12 @@ public class PokemonService {
 		return pokemonRepository.findAll();
 	}
 
+	public Pokemon findById(String id) {
+		// Optional : soit l'objet soit null
+		// SELECT * FROM pokemon WHERE id = :id
+		return pokemonRepository.findById(id).orElse(null);
+	}
+
 	// Trajet de la donnée
 	// Controller -> Service -> Repository -> Entité -> BDD
 	public void save(Pokemon pokemon) {
