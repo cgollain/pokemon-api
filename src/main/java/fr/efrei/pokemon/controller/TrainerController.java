@@ -1,5 +1,6 @@
 package fr.efrei.pokemon.controller;
 
+import fr.efrei.pokemon.dto.CreateTrainer;
 import fr.efrei.pokemon.models.Trainer;
 import fr.efrei.pokemon.services.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class TrainerController {
 	}
 
 	@PostMapping
-	public ResponseEntity<?> save(@RequestBody Trainer trainer) {
+	public ResponseEntity<?> save(@RequestBody CreateTrainer trainer) {
 		trainerService.save(trainer);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
