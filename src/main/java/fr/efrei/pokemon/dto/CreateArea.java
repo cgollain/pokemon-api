@@ -1,32 +1,13 @@
-package fr.efrei.pokemon.models;
-
-import jakarta.persistence.*;
+package fr.efrei.pokemon.dto;
 
 import java.util.List;
 
-@Entity
-public class Area {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+public class CreateArea {
 
     private String name;
-
     private Integer minLevel;
-
     private Integer maxLevel;
-
-    @OneToMany
-    private List<Pokemon> avaiblePokemons;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    private List<String> avaiblePokemons;
 
     public String getName() {
         return name;
@@ -45,19 +26,18 @@ public class Area {
     }
 
     public Integer getMaxLevel() {
-        return maxLevel; //(C'est le niveau max d'un pokemon pour une area)
+        return maxLevel;
     }
 
     public void setMaxLevel(Integer maxLevel) {
         this.maxLevel = maxLevel;
     }
 
-    public List<Pokemon> getAvaiblePokemons() {
+    public List<String> getAvaiblePokemons() {
         return avaiblePokemons;
     }
 
-    public void setAvaiblePokemons(List<Pokemon> avaiblePokemons) {
+    public void setAvaiblePokemons(List<String> avaiblePokemons) {
         this.avaiblePokemons = avaiblePokemons;
     }
-
 }
