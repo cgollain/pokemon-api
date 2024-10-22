@@ -51,4 +51,14 @@ public class TrainerController {
 		trainerService.update(id, trainerBody);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> delete(@PathVariable String id) {
+		Trainer trainer = trainerService.findById(id);
+		if (trainer == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		trainerService.delete(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
 }

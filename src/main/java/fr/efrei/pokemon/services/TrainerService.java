@@ -74,7 +74,9 @@ public class TrainerService {
 			trainer.setTeam(pokemonList);
 		}
 		repository.save(trainer);
-		// id pikachu : "14b08b2e-e47c-416d-bebb-efe077ab0f7c"
-		// id sacha : "4decc563-dc5d-4d2a-b480-c5b56ae8be4b"
+	}
+
+	public void delete(String id) {
+		repository.deleteById(id);
 	}
 }
