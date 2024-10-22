@@ -24,4 +24,8 @@ public class TrainerService {
 	public Trainer findById(String id) {
 		return repository.findById(id).orElse(null);
 	}
+
+	public void save(Trainer trainer) {
+		repository.save(trainer);
+	}
 }
