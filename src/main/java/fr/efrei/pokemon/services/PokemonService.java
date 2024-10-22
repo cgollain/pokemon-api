@@ -49,4 +49,18 @@ public class PokemonService {
 		pokemonAModifier.setLevel(pokemonBody.getLevel());
 		pokemonRepository.save(pokemonAModifier);
 	}
+
+	public void partialUpdate(String id, Pokemon pokemonBody) {
+		Pokemon pokemonAModifier = findById(id);
+		if(pokemonBody.getType() != null) {
+			pokemonAModifier.setType(pokemonBody.getType());
+		}
+		if(pokemonBody.getName() != null) {
+			pokemonAModifier.setName(pokemonBody.getName());
+		}
+		if(pokemonBody.getLevel() != 0) {
+			pokemonAModifier.setLevel(pokemonBody.getLevel());
+		}
+		pokemonRepository.save(pokemonAModifier);
+	}
 }

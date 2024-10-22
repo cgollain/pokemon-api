@@ -44,7 +44,7 @@ public class PokemonController {
 
 	// PUT
 	@PutMapping("/{id}")
-	public ResponseEntity<Pokemon> update(@PathVariable String id, @RequestBody Pokemon pokemon) {
+	public ResponseEntity<?> update(@PathVariable String id, @RequestBody Pokemon pokemon) {
 		Pokemon pokemonAModifier = service.findById(id);
 		if (pokemonAModifier == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -62,5 +62,15 @@ public class PokemonController {
 		}
 		service.delete(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+	@PatchMapping("/{id}")
+	public ResponseEntity<?> partialUpdate(@PathVariable String id, @RequestBody Pokemon pokemonBody) {
+		Pokemon pokemon = service.findById(id);
+		if(pokemon == null) {
+			return new ResponseEntity< >(HttpStatus.NOT_FOUND);
+		}
+		service.partialUpdate(id, pokemonBody);
+		return new ResponseEntity< >(HttpStatus.NO_CONTENT);
 	}
 }
