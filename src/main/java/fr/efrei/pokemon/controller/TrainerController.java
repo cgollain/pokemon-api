@@ -1,6 +1,7 @@
 package fr.efrei.pokemon.controller;
 
 import fr.efrei.pokemon.dto.CreateTrainer;
+import fr.efrei.pokemon.dto.UpdateTrainer;
 import fr.efrei.pokemon.models.Trainer;
 import fr.efrei.pokemon.services.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,15 @@ public class TrainerController {
 	public ResponseEntity<?> save(@RequestBody CreateTrainer trainer) {
 		trainerService.save(trainer);
 		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
+
+	@PatchMapping("/{id}")
+	public ResponseEntity<?> update(@PathVariable String id, @RequestBody UpdateTrainer trainerBody) {
+		Trainer trainer = trainerService.findById(id);
+		if (trainer == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		trainerService.update(id, trainerBody);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }
