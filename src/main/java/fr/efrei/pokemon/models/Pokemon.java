@@ -1,9 +1,7 @@
 package fr.efrei.pokemon.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import fr.efrei.pokemon.constants.Type;
+import jakarta.persistence.*;
 
 @Entity
 public class Pokemon {
@@ -16,7 +14,8 @@ public class Pokemon {
 
 	private int level;
 
-	private String type;
+	@Enumerated(EnumType.STRING)
+	private Type type; // SI mon pokemon est type feu -> Type == "FEU"
 
 	public String getName() {
 		return name;
@@ -34,11 +33,11 @@ public class Pokemon {
 		this.level = level;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 
